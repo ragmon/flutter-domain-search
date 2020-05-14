@@ -1,4 +1,4 @@
-import 'package:domainsearch/ui/search.dart';
+import 'package:domainsearch/ui/domain_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -94,7 +94,7 @@ class _SearchingFormState extends State<SearchingForm> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (_) => SearchScreen(
+          builder: (_) => DomainDetailsScreen(
             domain: _searchFieldController.text,
           ),
         ),
@@ -142,9 +142,9 @@ class BasedOnInfo extends StatelessWidget {
                 ),
               ),
               Text(
-                "Domainr",
+                "Domainr.com",
                 style: TextStyle(
-                  fontSize: 16.0,
+                  fontSize: 18.0,
                 ),
               ),
             ],
