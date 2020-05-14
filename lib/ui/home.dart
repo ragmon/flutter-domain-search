@@ -68,7 +68,7 @@ class _SearchingFormState extends State<SearchingForm> {
                     : null,
               ),
               controller: _searchFieldController,
-              maxLength: 63,
+              maxLength: 64,
               onSubmitted: (String value) => _search(context),
             ),
           ),

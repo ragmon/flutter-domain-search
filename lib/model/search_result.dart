@@ -1,4 +1,4 @@
-class SearchResult {
+class SearchResultModel {
   String domain;
   String host;
   String subdomain;
@@ -6,7 +6,7 @@ class SearchResult {
   String path;
   String registerURL;
 
-  SearchResult(
+  SearchResultModel(
       {this.domain,
       this.host,
       this.subdomain,
@@ -14,8 +14,8 @@ class SearchResult {
       this.path,
       this.registerURL});
 
-  factory SearchResult.fromJson(Map<String, dynamic> json) {
-    return SearchResult(
+  factory SearchResultModel.fromJson(Map<String, dynamic> json) {
+    return SearchResultModel(
       domain: json["domain"],
       host: json["host"],
       subdomain: json["subdomain"],
@@ -26,14 +26,14 @@ class SearchResult {
   }
 }
 
-class SearchResultList {
-  final List<SearchResult> searchResultList;
+class SearchResultListModel {
+  final List<SearchResultModel> searchResultList;
 
-  SearchResultList({this.searchResultList});
+  SearchResultListModel({this.searchResultList});
 
-  factory SearchResultList.fromJson(List<dynamic> parsedJson) {
-    return SearchResultList(
+  factory SearchResultListModel.fromJson(List<dynamic> parsedJson) {
+    return SearchResultListModel(
         searchResultList:
-            parsedJson.map((value) => SearchResult.fromJson(value)).toList());
+            parsedJson.map((value) => SearchResultModel.fromJson(value)).toList());
   }
 }

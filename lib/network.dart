@@ -27,7 +27,7 @@ class Network {
     }
   }
 
-  static Future<SearchResultList> fetchSearchResults(String domain) async {
+  static Future<SearchResultListModel> fetchSearchResults(String domain) async {
     final queryParameters = {
       "mashape-key": mashapeKey,
       "query": domain,
@@ -36,7 +36,7 @@ class Network {
 
     final response = await http.get(uri);
     if (response.statusCode == 200) {
-      return SearchResultList.fromJson(json.decode(response.body)["results"]);
+      return SearchResultListModel.fromJson(json.decode(response.body)["results"]);
     } else {
       throw Exception("Faild to load search result");
     }
