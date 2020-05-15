@@ -129,6 +129,7 @@ class _DomainStatusState extends State<DomainStatus> {
   Widget _buildStatusList(BuildContext context, AsyncSnapshot snapshot) {
     return ListView.separated(
       shrinkWrap: true,
+      primary: false,
       separatorBuilder: (context, index) => Divider(
         color: Colors.white,
       ),
@@ -161,6 +162,7 @@ class _DomainStatusState extends State<DomainStatus> {
   Widget _buildStatusErrorList(BuildContext context, AsyncSnapshot snapshot) {
     return ListView.separated(
       shrinkWrap: true,
+      primary: false,
       itemBuilder: (context, index) {
         StatusErrorModel statusError =
             (snapshot.data as StatusErrorList).statusErrors[index];
@@ -218,7 +220,7 @@ class _SearchResultsState extends State<SearchResults> {
   Widget _buildSearchResults(BuildContext context, AsyncSnapshot snapshot) {
     return ListView.separated(
       shrinkWrap: true,
-      scrollDirection: Axis.vertical,
+      primary: false,
       itemBuilder: (context, index) {
         SearchResultModel searchResult =
             (snapshot.data as SearchResultListModel).searchResultList[index];
