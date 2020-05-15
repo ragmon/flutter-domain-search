@@ -23,9 +23,8 @@ class Network {
     final response = await http.get(uri);
     if (response.statusCode == 200) {
       var parsedJson = json.decode(response.body);
-      print(parsedJson);
       if (parsedJson["errors"] == null) {
-        return StatusList.fromJson(parsedJson["status"]);
+        return StatusListModel.fromJson(parsedJson["status"]);
       } else {
         return StatusErrorList.fromJson(parsedJson["errors"]);
       }

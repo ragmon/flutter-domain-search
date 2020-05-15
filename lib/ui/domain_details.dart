@@ -1,7 +1,9 @@
 import 'package:domainsearch/model/search_result.dart';
 import 'package:domainsearch/model/status.dart';
 import 'package:domainsearch/network.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DomainDetailsScreen extends StatelessWidget {
   final String domain;
@@ -15,11 +17,12 @@ class DomainDetailsScreen extends StatelessWidget {
         title: Text("Domain details"),
       ),
       body: ListView(
-        scrollDirection: Axis.vertical,
         children: <Widget>[
           DomainStatus(domain: domain),
-          Divider(),
-          SearchResults(),
+          Divider(
+            color: Colors.white,
+          ),
+          SearchResults(domain: domain),
         ],
       ),
     );
@@ -52,7 +55,7 @@ class _DomainStatusState extends State<DomainStatus> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           // Received status list
-          if (snapshot.data is StatusList) {
+          if (snapshot.data is StatusListModel) {
             return _buildStatusList(context, snapshot);
           }
           // Received errors list
@@ -60,7 +63,7 @@ class _DomainStatusState extends State<DomainStatus> {
             return _buildStatusErrorList(context, snapshot);
           }
         } else if (snapshot.hasError) {
-          return Text("Error: ${snapshot.error}");
+          return Center(child: Text("Error: ${snapshot.error}"));
         } else {
           return Center(child: CircularProgressIndicator());
         }
@@ -124,71 +127,132 @@ class _DomainStatusState extends State<DomainStatus> {
   }
 
   Widget _buildStatusList(BuildContext context, AsyncSnapshot snapshot) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      child: ListView.separated(
-        separatorBuilder: (context, index) => Divider(
-          color: Colors.white,
-        ),
-        itemCount: (snapshot.data as StatusList).statuses.length,
-        itemBuilder: (context, index) {
-          Status status = (snapshot.data as StatusList).statuses[index];
-          return Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  status.domain,
-                  style: TextStyle(
-                    fontSize: 18.0,
-                  ),
-                ),
-              ),
-              Text(
-                _getSummary(status.summary),
-                style: TextStyle(
-                  color: _getSummaryTextColor(status.summary),
-                ),
-              ),
-            ],
-          );
-        },
+    return ListView.separated(
+      shrinkWrap: true,
+      separatorBuilder: (context, index) => Divider(
+        color: Colors.white,
       ),
+      itemCount: (snapshot.data as StatusListModel).statuses.length,
+      itemBuilder: (context, index) {
+        StatusModel status = (snapshot.data as StatusListModel).statuses[index];
+        return Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Text(
+                status.domain,
+                style: TextStyle(
+                  fontSize: 18.0,
+                ),
+              ),
+            ),
+            Text(
+              _getSummary(status.summary),
+              style: TextStyle(
+                color: _getSummaryTextColor(status.summary),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 
   Widget _buildStatusErrorList(BuildContext context, AsyncSnapshot snapshot) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      child: ListView.separated(
-        itemBuilder: (context, index) {
-          StatusError statusError =
-              (snapshot.data as StatusErrorList).statusErrors[index];
-          return Column(
-            children: <Widget>[
-              Text("Code: ${statusError.code}"),
-              Text("Message: ${statusError.message}"),
-              Text("Details: ${statusError.details}"),
-            ],
-          );
-        },
-        separatorBuilder: (context, index) => Divider(
-          color: Colors.white,
-        ),
-        itemCount: (snapshot.data as StatusErrorList).statusErrors.length,
+    return ListView.separated(
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        StatusErrorModel statusError =
+            (snapshot.data as StatusErrorList).statusErrors[index];
+        return Column(
+          children: <Widget>[
+            Text("Code: ${statusError.code}"),
+            Text("Message: ${statusError.message}"),
+            Text("Details: ${statusError.detail}"),
+          ],
+        );
+      },
+      separatorBuilder: (context, index) => Divider(
+        color: Colors.white,
       ),
+      itemCount: (snapshot.data as StatusErrorList).statusErrors.length,
     );
   }
 }
 
 class SearchResults extends StatefulWidget {
+  final String domain;
+
+  const SearchResults({Key key, this.domain}) : super(key: key);
+
   @override
   _SearchResultsState createState() => _SearchResultsState();
 }
 
 class _SearchResultsState extends State<SearchResults> {
+  Future<SearchResultListModel> _futureSearchResults;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _futureSearchResults = Network.fetchSearchResults(widget.domain);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return FutureBuilder(
+      future: _futureSearchResults,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return _buildSearchResults(context, snapshot);
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }
+
+  Widget _buildSearchResults(BuildContext context, AsyncSnapshot snapshot) {
+    return ListView.separated(
+      shrinkWrap: true,
+      scrollDirection: Axis.vertical,
+      itemBuilder: (context, index) {
+        SearchResultModel searchResult =
+            (snapshot.data as SearchResultListModel).searchResultList[index];
+        return Column(
+          children: <Widget>[
+            Text("${searchResult.domain}"),
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+              ),
+              onPressed: () => _openRegisterURL(searchResult.registerURL),
+              color: Colors.green,
+              textColor: Colors.white,
+              child: Text(
+                "Register".toUpperCase(),
+                style: TextStyle(fontSize: 14),
+              ),
+            ),
+          ],
+        );
+      },
+      separatorBuilder: (context, index) => Divider(
+        color: Colors.white,
+      ),
+      itemCount:
+          (snapshot.data as SearchResultListModel).searchResultList.length,
+    );
+  }
+
+  _openRegisterURL(String registerURL) async {
+    if (await canLaunch(registerURL)) {
+      await launch(registerURL);
+    } else {
+      throw 'Could not launch $registerURL';
+    }
   }
 }

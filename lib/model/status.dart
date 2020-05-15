@@ -1,13 +1,13 @@
-class Status {
+class StatusModel {
   String domain;
   String zone;
   String status;
   String summary;
 
-  Status({this.domain, this.zone, this.status, this.summary});
+  StatusModel({this.domain, this.zone, this.status, this.summary});
 
-  factory Status.fromJson(Map<String, dynamic> json) {
-    return Status(
+  factory StatusModel.fromJson(Map<String, dynamic> json) {
+    return StatusModel(
       domain: json["domain"],
       zone: json["zone"],
       status: json["status"],
@@ -16,41 +16,41 @@ class Status {
   }
 }
 
-class StatusList {
-  final List<Status> statuses;
+class StatusListModel {
+  final List<StatusModel> statuses;
 
-  StatusList({this.statuses});
+  StatusListModel({this.statuses});
 
-  factory StatusList.fromJson(List<dynamic> parsedJson) {
-    return StatusList(
-        statuses: parsedJson.map((value) => Status.fromJson(value)).toList());
+  factory StatusListModel.fromJson(List<dynamic> parsedJson) {
+    return StatusListModel(
+        statuses: parsedJson.map((value) => StatusModel.fromJson(value)).toList());
   }
 }
 
-class StatusError {
+class StatusErrorModel {
   int code;
   String message;
-  String details;
+  String detail;
 
-  StatusError({this.code, this.message, this.details});
+  StatusErrorModel({this.code, this.message, this.detail});
 
-  factory StatusError.fromJson(Map<String, dynamic> json) {
-    return StatusError(
+  factory StatusErrorModel.fromJson(Map<String, dynamic> json) {
+    return StatusErrorModel(
       code: json["code"],
       message: json["message"],
-      details: json["details"],
+      detail: json["detail"],
     );
   }
 }
 
 class StatusErrorList {
-  final List<StatusError> statusErrors;
+  final List<StatusErrorModel> statusErrors;
 
   StatusErrorList({this.statusErrors});
 
   factory StatusErrorList.fromJson(List<dynamic> parsedJson) {
     return StatusErrorList(
         statusErrors:
-            parsedJson.map((value) => StatusError.fromJson(value)).toList());
+            parsedJson.map((value) => StatusErrorModel.fromJson(value)).toList());
   }
 }
