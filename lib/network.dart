@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:domainsearch/model/search_result.dart';
 import 'package:domainsearch/model/status.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:http/http.dart' as http;
 
@@ -12,7 +13,7 @@ class Network {
   // https://rapidapi.com/domainr/api/domainr/endpoints
   static String mashapeKey = "02e672673bmshd8b651c96496435p18388bjsn87009844c6b1";
 
-  static Future<StatusList> fetchDomainStatus(String domain) async {
+  static /*Future<StatusList>*/ fetchDomainStatus(String domain) async {
     final queryParameters = {
       "mashape-key": mashapeKey,
       "domain": domain,
@@ -21,7 +22,13 @@ class Network {
 
     final response = await http.get(uri);
     if (response.statusCode == 200) {
-      return StatusList.fromJson(json.decode(response.body)["status"]);
+      var parsedJson = json.decode(response.body);
+      print(parsedJson);
+      if (parsedJson["errors"] == null) {
+        return StatusList.fromJson(parsedJson["status"]);
+      } else {
+        return StatusErrorList.fromJson(parsedJson["errors"]);
+      }
     } else {
       throw Exception("Faild to load domain status");
     }

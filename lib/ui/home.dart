@@ -1,6 +1,5 @@
 import 'package:domainsearch/ui/domain_details.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -58,7 +57,6 @@ class _SearchingFormState extends State<SearchingForm> {
           Flexible(
             flex: 6,
             child: TextField(
-              inputFormatters: <TextInputFormatter>[DomainTextInputFormatter()],
               decoration: InputDecoration(
                 helperText: "example.com",
                 prefix: Text("Domain: "),
@@ -100,15 +98,6 @@ class _SearchingFormState extends State<SearchingForm> {
         ),
       );
     }
-  }
-}
-
-class DomainTextInputFormatter implements TextInputFormatter {
-  @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
-    return newValue.copyWith(
-        text: newValue.text.toLowerCase().replaceAll(" ", "").trim());
   }
 }
 
