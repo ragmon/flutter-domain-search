@@ -1,7 +1,7 @@
 import 'package:domainsearch/model/search_result.dart';
 import 'package:domainsearch/model/status.dart';
 import 'package:domainsearch/network.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:domainsearch/ui/seo_tools.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -153,6 +153,21 @@ class _DomainStatusState extends State<DomainStatus> {
                 color: _getSummaryTextColor(status.summary),
               ),
             ),
+            Visibility(
+              visible: _getSEOToolsVisibility(status.summary),
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18.0),
+                ),
+                onPressed: () => _openSEOTools(context, widget.domain),
+                color: Colors.indigo,
+                textColor: Colors.white,
+                child: Text(
+                  "SEO Tools".toUpperCase(),
+                  style: TextStyle(fontSize: 14),
+                ),
+              ),
+            ),
           ],
         );
       },
@@ -179,6 +194,23 @@ class _DomainStatusState extends State<DomainStatus> {
       ),
       itemCount: (snapshot.data as StatusErrorList).statusErrors.length,
     );
+  }
+
+  void _openSEOTools(BuildContext context, String domain) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => SEOToolsScreen(domain: domain),
+        ));
+  }
+
+  bool _getSEOToolsVisibility(String status) {
+    switch (status) {
+      case "active":
+        return true;
+      default:
+        return false;
+    }
   }
 }
 
