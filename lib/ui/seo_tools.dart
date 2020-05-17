@@ -63,14 +63,14 @@ class _SEOToolsScreenState extends State<SEOToolsScreen> {
             ),
           ),
         ),
-        Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-          child: Text(
-            "Main tags",
-            style: TextStyle(fontSize: 16.0),
-          ),
-        ),
+//        Container(
+//          alignment: Alignment.center,
+//          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+//          child: Text(
+//            "Main tags",
+//            style: TextStyle(fontSize: 16.0),
+//          ),
+//        ),
 //        Divider(color: Colors.white),
         ExpansionTile(
           leading: Icon(
