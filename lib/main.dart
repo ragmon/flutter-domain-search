@@ -14,8 +14,11 @@ class App extends StatelessWidget {
   }
 
   ThemeData _buildTheme() {
-    return ThemeData.light().copyWith(
+    return ThemeData.dark().copyWith(
       scaffoldBackgroundColor: Colors.blueAccent,
+      appBarTheme: AppBarTheme(
+        color: Colors.indigo,
+      ),
       cursorColor: Colors.white,
       textTheme: TextTheme(
         title: TextStyle(

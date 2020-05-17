@@ -18,7 +18,7 @@ class Network {
       "mashape-key": mashapeKey,
       "domain": domain,
     };
-    final uri = Uri.https(host, "/v2/status", queryParameters);
+    final Uri uri = Uri.https(host, "/v2/status", queryParameters);
 
     final response = await http.get(uri);
     if (response.statusCode == 200) {
@@ -29,7 +29,7 @@ class Network {
         return StatusErrorList.fromJson(parsedJson["errors"]);
       }
     } else {
-      throw Exception("Faild to load domain status");
+      throw Exception("Fail to load domain status");
     }
   }
 
@@ -38,13 +38,32 @@ class Network {
       "mashape-key": mashapeKey,
       "query": domain,
     };
-    final uri = Uri.https(host, "/v2/search", queryParameters);
+    final Uri uri = Uri.https(host, "/v2/search", queryParameters);
 
     final response = await http.get(uri);
     if (response.statusCode == 200) {
       return SearchResultListModel.fromJson(json.decode(response.body)["results"]);
     } else {
-      throw Exception("Faild to load search result");
+      throw Exception("Fail to load search result");
     }
+  }
+
+  static Future<String> fetchIndexPage(String domain) async {
+    final Uri uri = Uri.http(domain, "/");
+
+    final response = await http.get(uri);
+    if (response.statusCode == 200) {
+      return response.body;
+    } else {
+      throw Exception("Fail to load index page");
+    }
+  }
+
+  static Future<bool> checkFile(String domain, String file) async {
+    final Uri uri = Uri.http(domain, "/$file");
+
+    final response = await http.get(uri);
+
+    return response.statusCode == 200;
   }
 }
