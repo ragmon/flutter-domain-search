@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:domainsearch/model/search_result.dart';
+import 'package:domainsearch/model/seo_report.dart';
 import 'package:domainsearch/model/status.dart';
-import 'package:flutter/cupertino.dart';
 
 import 'package:http/http.dart' as http;
 
@@ -65,5 +65,14 @@ class Network {
     final response = await http.get(uri);
 
     return response.statusCode == 200;
+  }
+
+  static Future<FileStatuses> checkFiles(String domain) async {
+    FileStatuses files = new FileStatuses();
+
+    files.hasRobots = await Network.checkFile(domain, "robots.txt");
+    files.hasSitemap = await Network.checkFile(domain, "sitemap.xml");
+
+    return files;
   }
 }
