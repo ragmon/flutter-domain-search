@@ -88,21 +88,7 @@ class _SEOToolsScreenState extends State<SEOToolsScreen> {
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: RaisedButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0),
-            ),
-            onPressed: () => _openSite(widget.domain),
-            color: Colors.indigo,
-            textColor: Colors.white,
-            child: Text(
-              "View Site".toUpperCase(),
-              style: TextStyle(fontSize: 14),
-            ),
-          ),
-        ),
+        ViewSiteButton(onPressed: () => _openSite(widget.domain)),
       ],
     );
   }
@@ -235,6 +221,31 @@ class ToolButton extends StatelessWidget {
             title,
             style: TextStyle(fontSize: 14),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class ViewSiteButton extends StatelessWidget {
+  final void Function() onPressed;
+
+  const ViewSiteButton({Key key, this.onPressed}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.0),
+        ),
+        onPressed: () => onPressed,
+        color: Colors.indigo,
+        textColor: Colors.white,
+        child: Text(
+          "View Site".toUpperCase(),
+          style: TextStyle(fontSize: 14),
         ),
       ),
     );

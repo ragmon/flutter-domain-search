@@ -1,7 +1,7 @@
 import 'package:domainsearch/model/search_result.dart';
 import 'package:domainsearch/model/status.dart';
 import 'package:domainsearch/network.dart';
-import 'package:domainsearch/ui/seo_tools/seo_tools.dart';
+import 'package:domainsearch/ui/seo_tools.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
