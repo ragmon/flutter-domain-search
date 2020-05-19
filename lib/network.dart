@@ -75,4 +75,16 @@ class Network {
 
     return files;
   }
+
+  static Future<String> get(String url) async {
+    final Uri uri = Uri.parse(url);
+
+    final response = await http.get(uri);
+
+    if (response.statusCode == 200) {
+      return response.body;
+    } else {
+      throw Exception("Fail to load $uri");
+    }
+  }
 }

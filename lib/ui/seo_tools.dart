@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:domainsearch/model/seo_report.dart';
 import 'package:domainsearch/network.dart';
 import 'package:domainsearch/parser.dart';
+import 'package:domainsearch/ui/view_links.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -88,6 +89,11 @@ class _SEOToolsScreenState extends State<SEOToolsScreen> {
             ],
           ),
         ),
+        ToolButton(
+          title: "Check Sitemap links",
+          visible: snapshot.data.files?.hasSitemap ?? false,
+          onPressed: () => _checkSitemapLinks(widget.domain),
+        ),
         ViewSiteButton(onPressed: () => _openSite(widget.domain)),
       ],
     );
@@ -135,6 +141,14 @@ class _SEOToolsScreenState extends State<SEOToolsScreen> {
     controller.add(seoReport);
 
     controller.close();
+  }
+
+  void _checkSitemapLinks(String domain) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => ViewLinksScreen(domain: domain),
+        ));
   }
 }
 
