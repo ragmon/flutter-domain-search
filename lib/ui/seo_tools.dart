@@ -30,6 +30,13 @@ class _SEOToolsScreenState extends State<SEOToolsScreen> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+
+    _streamController.close();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

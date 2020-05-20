@@ -26,6 +26,13 @@ class _ViewLinksScreenState extends State<ViewLinksScreen> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+
+    _streamController.close();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -42,7 +49,8 @@ class _ViewLinksScreenState extends State<ViewLinksScreen> {
               children: <Widget>[
                 Center(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 10.0),
                     child: Text(
                       "Sitemap.xml",
                       style: TextStyle(
