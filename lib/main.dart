@@ -1,26 +1,27 @@
-import 'package:domainsearch/i10n/app_localizations.dart';
+import 'dart:async';
+
+import 'package:domainsearch/localization.dart';
 import 'package:domainsearch/ui/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
-void main() => runApp(App());
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      onGenerateTitle: (BuildContext context) => AppLocalizations.of(context).title,
+      onGenerateTitle: (BuildContext context) =>
+          AppLocalizations.of(context).title,
       localizationsDelegates: [
         const AppLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: [
-        const Locale("en"),
-        const Locale("ru"),
-        const Locale("uk"),
+        const Locale("en", ""),
+        const Locale("ru", ""),
+        const Locale("uk", ""),
       ],
-      title: AppLocalizations.of(context).title,
+//      title: AppLocalizations.of(context).title,
       theme: _buildTheme(),
       home: HomeScreen(),
     );
@@ -44,3 +45,5 @@ class App extends StatelessWidget {
     );
   }
 }
+
+void main() => runApp(App());

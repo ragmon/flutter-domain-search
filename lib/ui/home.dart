@@ -1,3 +1,4 @@
+import 'package:domainsearch/localization.dart';
 import 'package:domainsearch/ui/domain_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -58,11 +59,11 @@ class _SearchingFormState extends State<SearchingForm> {
             flex: 6,
             child: TextField(
               decoration: InputDecoration(
-                helperText: "example.com",
-                prefix: Text("Domain: "),
-                labelText: "Enter the Domain",
+                helperText: AppLocalizations.of(context).domainHelperText,
+                prefix: Text(AppLocalizations.of(context).domainPrefix),
+                labelText: AppLocalizations.of(context).enterTheDomain,
                 errorText: _domainFieldValid == false
-                    ? "Domain field can\'t be empty"
+                    ? AppLocalizations.of(context).domainErrorText
                     : null,
               ),
               controller: _searchFieldController,

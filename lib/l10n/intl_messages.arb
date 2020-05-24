@@ -1,0 +1,15 @@
+{
+  "@@last_modified": "2020-05-24T19:58:27.380434",
+  "title": "Domain Search",
+  "@title": {
+    "description": "Title for the DomainSearch application",
+    "type": "text",
+    "placeholders": {}
+  },
+  "enterTheDomain": "Enter the domain",
+  "@enterTheDomain": {
+    "description": "Domain search form intro text",
+    "type": "text",
+    "placeholders": {}
+  }
+}

@@ -1,3 +1,4 @@
+import 'package:domainsearch/localization.dart';
 import 'package:domainsearch/model/search_result.dart';
 import 'package:domainsearch/model/status.dart';
 import 'package:domainsearch/network.dart';
@@ -14,7 +15,7 @@ class DomainDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Domain details"),
+        title: Text(AppLocalizations.of(context).domainDetails),
       ),
       body: ListView(
         children: <Widget>[
@@ -71,49 +72,49 @@ class _DomainStatusState extends State<DomainStatus> {
     );
   }
 
-  String _getSummary(String summary) {
+  String _getSummary(String summary, BuildContext context) {
     switch (summary) {
       case "undelegated":
-        return "The domain is not present in DNS";
+        return AppLocalizations.of(context).domainSummaryUndelegated;
       case "inactive":
-        return "Available for new registration";
+        return AppLocalizations.of(context).domainSummaryInactive;
       case "pending":
-        return "TLD not yet in the root zone file";
+        return AppLocalizations.of(context).domainSummaryPending;
       case "disallowed":
-        return "Disallowed by the registry, ICANN, or other (wrong script, etc.)";
+        return AppLocalizations.of(context).domainSummaryDisallowed;
       case "claimed":
-        return "Claimed or reserved by some party (not available for new registration).";
+        return AppLocalizations.of(context).domainSummaryClaimed;
       case "reserved":
-        return "Explicitly reserved by ICANN, the registry, or another party";
+        return AppLocalizations.of(context).domainSummaryReserved;
       case "dpml":
-        return "Domains Protected Marks List, reserved for trademark holders";
+        return AppLocalizations.of(context).domainSummaryDpml;
       case "invalid":
-        return "Technically invalid, e.g. too long or too short";
+        return AppLocalizations.of(context).domainSummaryInvalid;
       case "active":
-        return "Registered, but possibly available via the aftermarket";
+        return AppLocalizations.of(context).domainSummaryActive;
       case "parked":
-        return "Active and parked, possibly available via the aftermarket";
+        return AppLocalizations.of(context).domainSummaryParked;
       case "marketed":
-        return "Explicitly marketed as for sale via the aftermarket";
+        return AppLocalizations.of(context).domainSummaryMarketed;
       case "expiring":
-        return "An expiring domain. e.g. in the Redemption Grace Period, and possibly available via a backorder service.";
+        return AppLocalizations.of(context).domainSummaryExpiring;
       case "deleting":
-        return "A expired domain pending removal from the registry. e.g. in the Pending Delete phase, and possibly available via a backorder service";
+        return AppLocalizations.of(context).domainSummaryDeleting;
       case "priced":
-        return "An aftermarket domain with an explicit price. e.g. via the BuyDomains service";
+        return AppLocalizations.of(context).domainSummaryPriced;
       case "transferable":
-        return "An aftermarket domain available for fast-transfer. e.g. in the Afternic inventory";
+        return AppLocalizations.of(context).domainSummaryTransferable;
       case "premium":
-        return "Premium domain name for sale by the registry";
+        return AppLocalizations.of(context).domainSummaryPremium;
       case "suffix":
-        return "A public suffix according to publicsuffix.org";
+        return AppLocalizations.of(context).domainSummarySuffix;
       case "zone":
-        return "A zone (domain extension) in the Domainr database";
-      case "tld	":
-        return "A top-level domain";
+        return AppLocalizations.of(context).domainSummaryZone;
+      case "tld":
+        return AppLocalizations.of(context).domainSummaryTld;
       case "unknown":
       default:
-        return "Unknown status";
+        return AppLocalizations.of(context).domainSummaryUnknown;
     }
   }
 
@@ -148,7 +149,7 @@ class _DomainStatusState extends State<DomainStatus> {
               ),
             ),
             Text(
-              _getSummary(status.summary),
+              _getSummary(status.summary, context),
               style: TextStyle(
                 color: _getSummaryTextColor(status.summary),
               ),
@@ -163,7 +164,7 @@ class _DomainStatusState extends State<DomainStatus> {
                 color: Colors.indigo,
                 textColor: Colors.white,
                 child: Text(
-                  "SEO Tools".toUpperCase(),
+                  AppLocalizations.of(context).seoTools.toUpperCase(),
                   style: TextStyle(fontSize: 14),
                 ),
               ),
@@ -267,7 +268,7 @@ class _SearchResultsState extends State<SearchResults> {
               color: Colors.green,
               textColor: Colors.white,
               child: Text(
-                "Register".toUpperCase(),
+                AppLocalizations.of(context).register.toUpperCase(),
                 style: TextStyle(fontSize: 14),
               ),
             ),

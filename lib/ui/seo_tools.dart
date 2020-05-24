@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:domainsearch/localization.dart';
 import 'package:domainsearch/model/seo_report.dart';
 import 'package:domainsearch/network.dart';
 import 'package:domainsearch/parser.dart';
@@ -40,7 +41,7 @@ class _SEOToolsScreenState extends State<SEOToolsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("SEO Tools"),
+        title: Text(AppLocalizations.of(context).seoTools),
       ),
       body: StreamBuilder<SEOReport>(
         stream: _streamController.stream,

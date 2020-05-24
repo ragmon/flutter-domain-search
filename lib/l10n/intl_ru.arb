@@ -1,0 +1,10 @@
+{
+  "@@locale": "ru",
+  "@@last_modified": "2020-05-24T19:45:21.275525",
+  "title": "Поиск домена",
+  "@title": {
+    "description": "Title for the DomainSearch application",
+    "type": "text",
+    "placeholders": {}
+  }
+}
