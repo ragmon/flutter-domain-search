@@ -1,10 +1,266 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2020-05-24T19:45:21.275525",
+  "@@last_modified": "2020-05-25T11:53:02.583876",
   "title": "Поиск домена",
   "@title": {
     "description": "Title for the DomainSearch application",
     "type": "text",
     "placeholders": {}
+  },
+  "enterTheDomain": "Ведите домен",
+  "@enterTheDomain": {
+    "description": "Domain search field intro text",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainPrefix": "Домен: ",
+  "@domainPrefix": {
+    "description": "Domain search field prefix",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainErrorText": "Домен должен быть задан",
+  "@domainErrorText": {
+    "description": "Domain search field error message",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainHelperText": "example.com",
+  "@domainHelperText": {
+    "description": "Domain search field helper text",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainDetails": "Детальнее о домене",
+  "@domainDetails": {
+    "description": "Domain details app bar title",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryUndelegated": "Домена нет в DNS",
+  "@domainSummaryUndelegated": {
+    "description": "Domain summary undelegated",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryInactive": "Доступнен для новой регистрации",
+  "@domainSummaryInactive": {
+    "description": "Domain summary inactive",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryPending": "TLD еще не находится в файле корневой зоны",
+  "@domainSummaryPending": {
+    "description": "Domain summary pending",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryDisallowed": "Запрещено реестром, ICANN или другим (неправильный сценарий и т. Д.)",
+  "@domainSummaryDisallowed": {
+    "description": "Domain summary disallowed",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryClaimed": "Заявлено или зарезервировано какой-либо стороной (недоступно для новой регистрации)",
+  "@domainSummaryClaimed": {
+    "description": "Domain summary claimed",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryReserved": "Явно зарезервировано ICANN, реестром или другой стороной",
+  "@domainSummaryReserved": {
+    "description": "Domain summary reserved",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryDpml": "Список защищенных марок доменов, зарезервированный для владельцев товарных знаков",
+  "@domainSummaryDpml": {
+    "description": "Domain summary DPML",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryInvalid": "Технически недействительным, например, слишком длинный или слишком короткий",
+  "@domainSummaryInvalid": {
+    "description": "Domain summary invalid",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryActive": "Зарегистрирован, но возможно доступен через вторичный рынок",
+  "@domainSummaryActive": {
+    "description": "Domain summary active",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryParked": "Активный и припаркованный, возможно, доступен через вторичный рынок",
+  "@domainSummaryParked": {
+    "description": "Domain summary parked",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryMarketed": "Явно продается как для продажи через вторичный рынок",
+  "@domainSummaryMarketed": {
+    "description": "Domain summary marketed",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryExpiring": "Уходящий домен. например в льготный период погашения, и, возможно, доступны через услугу отложенного заказа",
+  "@domainSummaryExpiring": {
+    "description": "Domain summary expiring",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryDeleting": "Истек срок действия домена, ожидающего удаления из реестра. например на этапе ожидания удаления и, возможно, доступны через службу отложенного заказа",
+  "@domainSummaryDeleting": {
+    "description": "Domain summary deleting",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryPriced": "Домен вторичного рынка с явной ценой. например через сервис BuyDomains",
+  "@domainSummaryPriced": {
+    "description": "Domain summary priced",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryTransferable": "Домен вторичного рынка доступен для быстрой передачи. например в афтерском инвентаре",
+  "@domainSummaryTransferable": {
+    "description": "Domain summary transferable",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryPremium": "Премиум доменное имя для продажи по реестру",
+  "@domainSummaryPremium": {
+    "description": "Domain summary premium",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummarySuffix": "Публичный суффикс в соответствии с publicsuffix.org",
+  "@domainSummarySuffix": {
+    "description": "Domain summary suffix",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryZone": "Зона (расширение домена) в базе данных домена",
+  "@domainSummaryZone": {
+    "description": "Domain summary zone",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryTld": "Домен верхнего уровня",
+  "@domainSummaryTld": {
+    "description": "Domain summary tld",
+    "type": "text",
+    "placeholders": {}
+  },
+  "domainSummaryUnknown": "Неизвестный статус",
+  "@domainSummaryUnknown": {
+    "description": "Domain summary unknown",
+    "type": "text",
+    "placeholders": {}
+  },
+  "seoTools": "SEO инструменты",
+  "@seoTools": {
+    "description": "SEO Tools title",
+    "type": "text",
+    "placeholders": {}
+  },
+  "register": "Регистрация",
+  "@register": {
+    "description": "Register button title",
+    "type": "text",
+    "placeholders": {}
+  },
+  "metaKeywords": "Мета ключевые слова",
+  "@metaKeywords": {
+    "description": "Meta keywords",
+    "type": "text",
+    "placeholders": {}
+  },
+  "metaDescription": "Мета-описание",
+  "@metaDescription": {
+    "description": "Meta description",
+    "type": "text",
+    "placeholders": {}
+  },
+  "pageTitle": "Заголовок",
+  "@pageTitle": {
+    "description": "Page title",
+    "type": "text",
+    "placeholders": {}
+  },
+  "h1": "H1",
+  "@h1": {
+    "description": "Page H1",
+    "type": "text",
+    "placeholders": {}
+  },
+  "openSitemapXml": "Открыть Sitemap.xml",
+  "@openSitemapXml": {
+    "description": "Open sitemap.xml button title",
+    "type": "text",
+    "placeholders": {}
+  },
+  "openRobotsTxt": "Открыть Robots.txt",
+  "@openRobotsTxt": {
+    "description": "Open robots.txt button title",
+    "type": "text",
+    "placeholders": {}
+  },
+  "checkSitemapLinks": "Открыть ссылки из sitemap.xml",
+  "@checkSitemapLinks": {
+    "description": "Check sitemap links button title",
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleTotalSymbols": "Всего: {total} символов",
+  "@titleTotalSymbols": {
+    "description": "Title total symbols",
+    "type": "text",
+    "placeholders": {
+      "total": {
+        "example": 36
+      }
+    }
+  },
+  "viewSite": "Просмотреть сайт",
+  "@viewSite": {
+    "description": "View site button title",
+    "type": "text",
+    "placeholders": {}
+  },
+  "sitemapXml": "Sitemap.xml",
+  "@sitemapXml": {
+    "description": "Sitemap.xml screen title",
+    "type": "text",
+    "placeholders": {}
+  },
+  "priorityValue": "Приоритет: {value}",
+  "@priorityValue": {
+    "description": "Priority value",
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "0.5"
+      }
+    }
+  },
+  "changeFrequency": "Частота обновленния: {value}",
+  "@changeFrequency": {
+    "description": "Change Frequency value",
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "weekly"
+      }
+    }
+  },
+  "lastModification": "Последняя модификация: {value}",
+  "@lastModification": {
+    "description": "Last modification value",
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "2020-05-21"
+      }
+    }
   }
 }

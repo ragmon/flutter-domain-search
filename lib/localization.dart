@@ -211,6 +211,8 @@ class AppLocalizations {
 
   // --- End of Domain summary messages --------------------------------------
 
+  // --- SEO tools -----------------------------------------------------------
+
   String get seoTools => Intl.message(
     "SEO Tools",
     name: "seoTools",
@@ -224,6 +226,107 @@ class AppLocalizations {
     desc: "Register button title",
     locale: localName,
   );
+
+  String get metaKeywords => Intl.message(
+    "Meta keywords",
+    name: "metaKeywords",
+    desc: "Meta keywords",
+    locale: localName,
+  );
+
+  String get metaDescription => Intl.message(
+    "Meta description",
+    name: "metaDescription",
+    desc: "Meta description",
+    locale: localName,
+  );
+
+  String get pageTitle => Intl.message(
+    "Title",
+    name: "pageTitle",
+    desc: "Page title",
+    locale: localName,
+  );
+
+  String get h1 => Intl.message(
+    "H1",
+    name: "h1",
+    desc: "Page H1",
+    locale: localName,
+  );
+
+  String get openSitemapXml => Intl.message(
+    "Open Sitemap.xml",
+    name: "openSitemapXml",
+    desc: "Open sitemap.xml button title",
+    locale: localName,
+  );
+
+  String get openRobotsTxt => Intl.message(
+    "Open Robots.txt",
+    name: "openRobotsTxt",
+    desc: "Open robots.txt button title",
+    locale: localName,
+  );
+
+  String get checkSitemapLinks => Intl.message(
+    "Check Sitemap links",
+    name: "checkSitemapLinks",
+    desc: "Check sitemap links button title",
+    locale: localName,
+  );
+
+  String titleTotalSymbols(int total) => Intl.message(
+    "Total: $total symbols",
+    name: "titleTotalSymbols",
+    args: [total],
+    desc: "Title total symbols",
+    examples: const {"total": 36},
+    locale: localName,
+  );
+
+  String get viewSite => Intl.message(
+    "View Site",
+    name: "viewSite",
+    desc: "View site button title",
+    locale: localName,
+  );
+
+  String get sitemapXml => Intl.message(
+    "Sitemap.xml",
+    name: "sitemapXml",
+    desc: "Sitemap.xml screen title",
+    locale: localName,
+  );
+
+  String priorityValue(String value) => Intl.message(
+    "Priority: $value",
+    name: "priorityValue",
+    args: [value],
+    desc: "Priority value",
+    examples: const {"value": "0.5"},
+    locale: localName,
+  );
+
+  String changeFrequency(String value) => Intl.message(
+    "Change Frequency: $value",
+    name: "changeFrequency",
+    args: [value],
+    desc: "Change Frequency value",
+    examples: const {"value": "weekly"},
+    locale: localName,
+  );
+
+  String lastModification(String value) => Intl.message(
+    "Last modification: $value",
+    name: "lastModification",
+    args: [value],
+    desc: "Last modification value",
+    examples: const {"value": "2020-05-21"},
+    locale: localName,
+  );
+
+  // --- End of SEO tools ----------------------------------------------------
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
@@ -231,7 +334,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
 
   @override
   bool isSupported(Locale locale) =>
-      ["en", "ru", "uk"].contains(locale.languageCode);
+      ["en", "ru"].contains(locale.languageCode);
 
   @override
   Future<AppLocalizations> load(Locale locale) => AppLocalizations.load(locale);

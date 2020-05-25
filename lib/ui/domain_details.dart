@@ -148,10 +148,13 @@ class _DomainStatusState extends State<DomainStatus> {
                 ),
               ),
             ),
-            Text(
-              _getSummary(status.summary, context),
-              style: TextStyle(
-                color: _getSummaryTextColor(status.summary),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                _getSummary(status.summary, context),
+                style: TextStyle(
+                  color: _getSummaryTextColor(status.summary),
+                ),
               ),
             ),
             Visibility(

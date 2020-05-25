@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:domainsearch/localization.dart';
 import 'package:domainsearch/ui/home.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +17,6 @@ class App extends StatelessWidget {
       supportedLocales: [
         const Locale("en", ""),
         const Locale("ru", ""),
-        const Locale("uk", ""),
       ],
 //      title: AppLocalizations.of(context).title,
       theme: _buildTheme(),

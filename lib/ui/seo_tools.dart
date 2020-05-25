@@ -64,19 +64,19 @@ class _SEOToolsScreenState extends State<SEOToolsScreen> {
       children: <Widget>[
         DomainSection(domain: widget.domain),
         ExpansionSection(
-          title: "Meta keywords",
+          title: AppLocalizations.of(context).metaKeywords,
           value: snapshot.data.page.metaKeywords,
         ),
         ExpansionSection(
-          title: "Meta description",
+          title: AppLocalizations.of(context).metaDescription,
           value: snapshot.data.page.metaDescription,
         ),
         ExpansionSection(
-          title: "Title",
+          title: AppLocalizations.of(context).pageTitle,
           value: snapshot.data.page.title,
         ),
         ExpansionSection(
-          title: "H1",
+          title: AppLocalizations.of(context).h1,
           value: snapshot.data.page.h1,
         ),
         Visibility(
@@ -85,12 +85,12 @@ class _SEOToolsScreenState extends State<SEOToolsScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ToolButton(
-                title: "Open Sitemap.xml",
+                title: AppLocalizations.of(context).openSitemapXml,
                 visible: snapshot.data.files?.hasSitemap ?? false,
                 onPressed: () => _openSitemapXml(widget.domain),
               ),
               ToolButton(
-                title: "Open Robots.txt",
+                title: AppLocalizations.of(context).openRobotsTxt,
                 visible: snapshot.data.files?.hasRobots ?? false,
                 onPressed: () => _openRobotsTxt(widget.domain),
               ),
@@ -98,7 +98,7 @@ class _SEOToolsScreenState extends State<SEOToolsScreen> {
           ),
         ),
         ToolButton(
-          title: "Check Sitemap links",
+          title: AppLocalizations.of(context).checkSitemapLinks,
           visible: snapshot.data.files?.hasSitemap ?? false,
           onPressed: () => _checkSitemapLinks(widget.domain),
         ),
@@ -207,7 +207,7 @@ class ExpansionSection extends StatelessWidget {
         color: value.length > 0 ? successColor : failColor,
       ),
       title: Text(title),
-      subtitle: Text("Total: ${value.length} symbols"),
+      subtitle: Text(AppLocalizations.of(context).titleTotalSymbols(value.length)),
       children: <Widget>[
         Container(
           padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
@@ -262,11 +262,11 @@ class ViewSiteButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(18.0),
         ),
-        onPressed: () => onPressed,
+        onPressed: onPressed,
         color: Colors.indigo,
         textColor: Colors.white,
         child: Text(
-          "View Site".toUpperCase(),
+          AppLocalizations.of(context).viewSite.toUpperCase(),
           style: TextStyle(fontSize: 14),
         ),
       ),

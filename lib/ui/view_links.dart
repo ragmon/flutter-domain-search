@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:domainsearch/localization.dart';
 import 'package:domainsearch/model/sitemap.dart';
 import 'package:domainsearch/sitemap.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +53,7 @@ class _ViewLinksScreenState extends State<ViewLinksScreen> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 8.0, horizontal: 10.0),
                     child: Text(
-                      "Sitemap.xml",
+                      AppLocalizations.of(context).sitemapXml,
                       style: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
@@ -72,11 +73,11 @@ class _ViewLinksScreenState extends State<ViewLinksScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                              "Priority: ${snapshot.data.list[index].priority}"),
+                              AppLocalizations.of(context).priorityValue(snapshot.data.list[index].priority)),
                           Text(
-                              "Change Frequency: ${snapshot.data.list[index].changefreq}"),
+                              AppLocalizations.of(context).changeFrequency(snapshot.data.list[index].changefreq)),
                           Text(
-                              "Last Modification: ${snapshot.data.list[index].lastmod}"),
+                              AppLocalizations.of(context).lastModification(snapshot.data.list[index].lastmod)),
                         ],
                       ),
                     );
