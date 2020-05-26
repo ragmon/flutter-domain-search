@@ -4,7 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
+  AnimationController searchAnimationController;
+  Animation<double> searchAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    searchAnimationController = AnimationController(
+        duration: const Duration(milliseconds: 1000), vsync: this);
+    searchAnimation = CurvedAnimation(parent: searchAnimationController, curve: Curves.easeIn);
+
+    searchAnimationController.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,18 +33,21 @@ class HomeScreen extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
-              colors: <Color> [
+              colors: <Color>[
                 Colors.blueAccent,
                 Colors.lightBlueAccent,
               ],
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SearchingForm(),
-              BasedOnInfo(),
-            ],
+          child: FadeTransition(
+            opacity: searchAnimation,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SearchingForm(),
+                BasedOnInfo(),
+              ],
+            ),
           ),
         ),
       ),
